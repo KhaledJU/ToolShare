@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/colorPrimary"
         tools:context=".LoginFragment">
@@ -19,35 +19,28 @@
             android:textColor="@android:color/white"
             android:textSize="40sp"
             android:gravity="center"
-            android:text="@string/login_now"
+            android:text="Sign up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:layout_marginTop="60dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
-            android:textColor="@android:color/black"
-            android:background="@android:color/white"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:text="Sign in with google "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:layout_marginTop="35dp"
-            android:textColor="@android:color/white"
+        <EditText
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/white"
             android:textSize="20sp"
-            android:gravity="center"
-            android:text="@string/or_sign_in_with_email"
+            android:hint="@string/full_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <EditText
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="20dp"
             android:paddingLeft="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -58,7 +51,6 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:inputType="textPassword"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:layout_marginTop="20dp"
@@ -71,6 +63,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <EditText
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/white"
+            android:textSize="20sp"
+            android:hint="@string/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/white"
+            android:textSize="20sp"
+            android:hint="@string/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
         <Button
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -81,10 +100,9 @@
             android:background="@color/colorAccent"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:text="@string/login"
+            android:text="@string/sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
 
 
         <LinearLayout
@@ -101,17 +119,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:onClick="switchToSignup"
-                android:id="@+id/sign_upTv"
+                android:onClick="switchToLogin"
+                android:id="@+id/login_Tv"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
-                android:text="@string/sign_up"
+                android:text="@string/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
-
 
     </LinearLayout>
 

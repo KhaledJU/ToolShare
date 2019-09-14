@@ -6,19 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import butterknife.OnClick;
-
-public class LoginActivity extends AppCompatActivity{
+public class SignupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_signup);
     }
 
-    public void switchToSignup(View view) {
-        Intent intent = new Intent(this,SignupActivity.class);
+    public void switchToLogin(View view) {
+        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
         finish();
     }
