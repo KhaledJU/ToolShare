@@ -20,4 +20,7 @@
     <string name="sign_out">Sign out</string>
     <string name="call">Call</string>
     <string name="add_to_widget">add to widget</string>
+    <string name="tool_name">Tool name</string>
+    <string name="available">Available</string>
+    <string name="add_tool">Add tool</string>
 </resources>
