@@ -58,15 +58,6 @@ public class MyToolsAdapter extends RecyclerView.Adapter<MyToolsAdapter.ViewHold
             }
         }, 0);
         holder.checkBox.setChecked(mTool.isAvailable());
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(holder.checkBox.isChecked()){
-                    holder.checkBox.setChecked(false);
-
-                }
-            }
-        });
 
     }
 
