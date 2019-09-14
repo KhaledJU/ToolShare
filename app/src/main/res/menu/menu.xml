@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_profile"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/profile" />
+
+    <item
+        android:id="@+id/item_mytools"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/my_tools" />
+
+    <item
+        android:id="@+id/item_signout"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/sign_out" />
+
+</menu>

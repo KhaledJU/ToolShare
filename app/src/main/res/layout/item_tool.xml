@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="10dp"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:contentDescription="@string/tool_img"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@android:color/white"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+        <TextView
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
