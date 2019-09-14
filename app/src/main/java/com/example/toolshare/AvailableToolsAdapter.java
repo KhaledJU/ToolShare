@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Callback;
+import com.example.toolshare.ui.ToolDetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,26 +20,26 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AcailableToolsAdapter extends RecyclerView.Adapter<AcailableToolsAdapter.ViewHolder> {
+public class AvailableToolsAdapter extends RecyclerView.Adapter<AvailableToolsAdapter.ViewHolder> {
 
     private Context context;
     private List<Tool> toolList;
 
-    public AcailableToolsAdapter(Context context, List<Tool> toolList) {
+    public AvailableToolsAdapter(Context context, List<Tool> toolList) {
         this.context = context;
         this.toolList = toolList;
     }
 
     @NonNull
     @Override
-    public AcailableToolsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AvailableToolsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_tool, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AcailableToolsAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final AvailableToolsAdapter.ViewHolder holder, final int position) {
 
         final Tool mTool = toolList.get(position);
 

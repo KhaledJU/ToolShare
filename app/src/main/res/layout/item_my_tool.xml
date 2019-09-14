@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/img_mytool_item"
             android:contentDescription="@string/tool_img"
             android:src="@drawable/ic_launcher_foreground"
             android:background="@android:color/white"
@@ -17,6 +18,7 @@
             android:layout_height="250dp"/>
 
         <TextView
+            android:id="@+id/tv_mytool_item"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@android:color/white"
@@ -33,6 +35,7 @@
             android:layout_height="wrap_content">
 
             <CheckBox
+                android:id="@+id/checkbox_mytool_item"
                 android:layout_weight="0.8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -42,6 +45,7 @@
                 android:checked="true"/>
 
             <ImageView
+                android:id="@+id/delete_img"
                 android:layout_weight="0.2"
                 android:layout_width="0dp"
                 android:layout_height="35dp"

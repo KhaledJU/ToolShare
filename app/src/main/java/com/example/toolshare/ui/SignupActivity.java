@@ -1,10 +1,12 @@
-package com.example.toolshare;
+package com.example.toolshare.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.toolshare.R;
 
 public class SignupActivity extends AppCompatActivity {
 

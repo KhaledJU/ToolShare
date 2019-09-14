@@ -1,8 +1,10 @@
-package com.example.toolshare;
+package com.example.toolshare.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.toolshare.R;
 
 public class MyToolsActivity extends AppCompatActivity {
 
