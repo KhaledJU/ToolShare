@@ -23,4 +23,5 @@
     <string name="tool_name">Tool name</string>
     <string name="available">Available</string>
     <string name="add_tool">Add tool</string>
+    <string name="choose_phote">Choose phote</string>
 </resources>

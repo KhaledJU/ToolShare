@@ -37,7 +37,7 @@
             app:civ_border_color="@color/colorAccent"
             android:layout_width="220dp"
             android:layout_height="220dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/user_icon"/>
 
         <Button
             android:paddingTop="10dp"
@@ -49,7 +49,7 @@
             android:background="@color/colorAccent"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:text="Choose phote"
+            android:text="@string/choose_phote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -62,7 +62,6 @@
 
             <TextView
                 android:gravity="center"
-                android:text="Mohammad Natsha"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="40dp"
                 android:textSize="30sp"
@@ -70,7 +69,6 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="cs.jubeh@gmail.coma"
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="20dp"
@@ -79,7 +77,6 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Hebron"
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="20dp"

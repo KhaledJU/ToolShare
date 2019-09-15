@@ -6,20 +6,20 @@ import android.os.Parcelable;
 public class Tool implements Parcelable {
     private String ownerId;
     private String imgUrl;
-    private String toolName;
+    private String name;
     private boolean available;
 
     public Tool(String ownerId, String imgUrl, String toolName, boolean availabel) {
         this.ownerId = ownerId;
         this.imgUrl = imgUrl;
-        this.toolName = toolName;
+        this.name = toolName;
         this.available = availabel;
     }
 
     protected Tool(Parcel in) {
         ownerId = in.readString();
         imgUrl = in.readString();
-        toolName = in.readString();
+        name = in.readString();
         available = in.readByte() != 0;
     }
 
@@ -43,8 +43,8 @@ public class Tool implements Parcelable {
         this.imgUrl = imgUrl;
     }
 
-    public void setToolName(String toolName) {
-        this.toolName = toolName;
+    public void setName(String toolName) {
+        this.name = toolName;
     }
 
     public void setAvailable(boolean available) {
@@ -59,8 +59,8 @@ public class Tool implements Parcelable {
         return imgUrl;
     }
 
-    public String getToolName() {
-        return toolName;
+    public String getName() {
+        return name;
     }
 
     public boolean isAvailable() {
@@ -76,7 +76,7 @@ public class Tool implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(ownerId);
         parcel.writeString(imgUrl);
-        parcel.writeString(toolName);
+        parcel.writeString(name);
         parcel.writeInt(available?1:0);
     }
 }

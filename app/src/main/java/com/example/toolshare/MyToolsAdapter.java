@@ -45,7 +45,7 @@ public class MyToolsAdapter extends RecyclerView.Adapter<MyToolsAdapter.ViewHold
     public void onBindViewHolder(@NonNull final MyToolsAdapter.ViewHolder holder, int position) {
         final Tool mTool = myToolsList.get(position);
 
-        holder.textView.setText(mTool.getToolName());
+        holder.textView.setText(mTool.getName());
 
         holder.imageView.postDelayed(new Runnable() {
             @Override

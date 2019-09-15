@@ -16,6 +16,8 @@
             android:background="?colorPrimary">
 
             <androidx.appcompat.widget.Toolbar
+                app:titleTextAppearance="@style/Toolbar.TitleText"
+                android:id="@+id/toolbar_detail"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,15 +31,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
+            android:id="@+id/img_tool_detail"
             android:background="@android:color/white"
-            android:layout_weight="0.45"
+            android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/tool_img" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_margin="20dp"
-            android:layout_weight="0.55"
+            android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
@@ -46,15 +50,18 @@
                 android:layout_height="wrap_content">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_owner"
                     app:civ_border_width="2dp"
                     app:civ_border_color="@color/colorAccent"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_launcher_background"/>
+                    android:src="@drawable/user_icon"/>
 
                 <TextView
+                    android:id="@+id/tv_owner_name"
+                    android:textColor="@color/colorAccent"
                     android:gravity="center"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -62,23 +69,26 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_owner_email"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="20dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_owner_phone"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="5dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_owner_city"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="5dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -89,6 +99,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:onClick="onCallClick"
                     android:layout_weight="0.5"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
@@ -101,6 +112,7 @@
                     android:layout_height="wrap_content"/>
 
                 <Button
+                    android:onClick="onAddWidgetClicked"
                     android:layout_weight="0.5"
                     android:layout_marginStart="20dp"
                     android:paddingTop="10dp"

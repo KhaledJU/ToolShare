@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.toolshare.ui.ToolDetailsActivity;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +45,7 @@ public class AvailableToolsAdapter extends RecyclerView.Adapter<AvailableToolsAd
 
         final Tool mTool = toolList.get(position);
 
-        holder.textView.setText(mTool.getToolName());
+        holder.textView.setText(mTool.getName());
 
         holder.imageView.postDelayed(new Runnable() {
             @Override
@@ -52,7 +54,16 @@ public class AvailableToolsAdapter extends RecyclerView.Adapter<AvailableToolsAd
                         .load(mTool.getImgUrl())
                         .placeholder(R.drawable.ic_launcher_foreground)
                         .error(R.drawable.ic_launcher_background)
-                        .into(holder.imageView);
+                        .into(holder.imageView, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
+                            }
+                        });
             }
         }, 0);
 
