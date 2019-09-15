@@ -53,15 +53,15 @@
                     android:id="@+id/img_owner"
                     app:civ_border_width="2dp"
                     app:civ_border_color="@color/colorAccent"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
                     android:src="@drawable/user_icon"/>
 
                 <TextView
                     android:id="@+id/tv_owner_name"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@android:color/white"
                     android:gravity="center"
-                    android:textSize="25sp"
+                    android:textSize="28sp"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -69,9 +69,17 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_owner_email"
+                android:id="@+id/tv_owner_city"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_owner_email"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="5dp"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -84,13 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tv_owner_city"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
 
             <LinearLayout
                 android:layout_marginTop="20dp"
@@ -101,8 +103,8 @@
                 <Button
                     android:onClick="onCallClick"
                     android:layout_weight="0.5"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:textColor="@android:color/white"
                     android:background="@color/colorAccent"
                     android:textSize="20sp"
@@ -114,9 +116,9 @@
                 <Button
                     android:onClick="onAddWidgetClicked"
                     android:layout_weight="0.5"
-                    android:layout_marginStart="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:layout_marginStart="25dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:textColor="@color/colorPrimary"
                     android:background="@android:color/white"
                     android:textSize="20sp"

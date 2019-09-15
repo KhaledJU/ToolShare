@@ -2,6 +2,9 @@ package com.example.toolshare.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +32,12 @@ public class ToolDetailsActivity extends AppCompatActivity {
 
     Tool mTool;
     User owner;
+
+    private static final String city = "City :  ";
+    private static final String phone = "Phone :  ";
+    private static final String email = "Email :  ";
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +76,16 @@ public class ToolDetailsActivity extends AppCompatActivity {
         }, 0);
 
         ownerNameTv.setText(owner.getFullName());
-        ownerEmailTv.setText(owner.getEmail());
-        ownerPhoneTv.setText(owner.getPhoneNumber());
-        ownerCityTv.setText(owner.getCity());
+        ownerEmailTv.setText(String.format("%s%s", email, owner.getEmail()));
+        ownerPhoneTv.setText(String.format("%s%s", phone, owner.getPhoneNumber()));
+        ownerCityTv.setText(String.format("%s%s", city, owner.getCity()));
 
     }
 
     public void onCallClick(View view) {
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+        dialIntent.setData(Uri.parse(String.format("tel:%s", owner.getPhoneNumber())));
+        startActivity(dialIntent);
     }
 
     public void onAddWidgetClicked(View view) {
