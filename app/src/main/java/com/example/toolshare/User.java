@@ -20,6 +20,7 @@ public class User implements Parcelable {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.city = city;
+        this.imgUrl = "default";
     }
 
     protected User(Parcel in) {

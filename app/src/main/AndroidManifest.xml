@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.PHONE_CALL" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SignupActivity"></activity>
+        <receiver android:name=".OwnerWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/owner_widget_info" />
+        </receiver>
+
+        <activity android:name=".ui.SignupActivity" />
         <activity android:name=".ui.AddToolActivity" />
         <activity android:name=".ui.MyToolsActivity" />
         <activity android:name=".ui.ProfileActivity" />

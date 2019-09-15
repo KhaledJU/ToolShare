@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.toolshare.OwnerWidget;
 import com.example.toolshare.R;
 import com.example.toolshare.Tool;
 import com.example.toolshare.User;
@@ -19,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.paperdb.Paper;
 
 public class ToolDetailsActivity extends AppCompatActivity {
 
@@ -50,6 +54,8 @@ public class ToolDetailsActivity extends AppCompatActivity {
                 "noob.natsha@gmail.com","basswood",
                 "0592499777","Hebron");
 
+        owner.setImgUrl("https://scontent.fjrs1-1.fna.fbcdn.net/v/t1.0-9/67233020_1200242943491050_4026239387086880768_n.jpg?_nc_cat=105&_nc_oc=AQlUy8Ts56XaO2-MXo0p9bvQRS4npIsGve6rdZ-3f0_2BS3jVCw5kiYf1-IF-2jUQ-Q&_nc_ht=scontent.fjrs1-1.fna&oh=dd7a5fb4393bbfbcbd776a679d67c850&oe=5E08000F");
+        //owner.setImgUrl("C:\\Users\\asus\\Desktop\\nat.jpg");
         setSupportActionBar(mToolbar);
         setTitle(mTool.getName());
 
@@ -89,5 +95,14 @@ public class ToolDetailsActivity extends AppCompatActivity {
     }
 
     public void onAddWidgetClicked(View view) {
+        Paper.init(this);
+        if(owner.getImgUrl() != null) Paper.book().write("imgUrl", owner.getImgUrl());
+        Paper.book().write("name", owner.getFullName());
+        Paper.book().write("city", owner.getCity());
+        Paper.book().write("email", owner.getEmail());
+        Paper.book().write("phone", owner.getPhoneNumber());
+
+        Intent intent = new Intent(this, OwnerWidget.class);
+        sendBroadcast(intent);
     }
 }

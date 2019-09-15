@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,26 +21,26 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AvailableToolsAdapter extends RecyclerView.Adapter<AvailableToolsAdapter.ViewHolder> {
+public class ToolsAdapter extends RecyclerView.Adapter<ToolsAdapter.ViewHolder> {
 
     private Context context;
     private List<Tool> toolList;
 
-    public AvailableToolsAdapter(Context context, List<Tool> toolList) {
+    public ToolsAdapter(Context context, List<Tool> toolList) {
         this.context = context;
         this.toolList = toolList;
     }
 
     @NonNull
     @Override
-    public AvailableToolsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ToolsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_tool, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AvailableToolsAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ToolsAdapter.ViewHolder holder, final int position) {
 
         final Tool mTool = toolList.get(position);
 
@@ -61,7 +60,7 @@ public class AvailableToolsAdapter extends RecyclerView.Adapter<AvailableToolsAd
 
                             @Override
                             public void onError(Exception e) {
-                                Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
                             }
                         });
             }

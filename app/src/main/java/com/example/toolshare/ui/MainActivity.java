@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
-import com.example.toolshare.AvailableToolsAdapter;
+import com.example.toolshare.ToolsAdapter;
 import com.example.toolshare.R;
 import com.example.toolshare.Tool;
 
@@ -47,7 +49,14 @@ public class MainActivity extends AppCompatActivity {
         toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "third tool",true));
         toolList.add(new Tool("","0", "forth tool",true));
 
-        mRecycle.setAdapter(new AvailableToolsAdapter(this,toolList));
+        mRecycle.setAdapter(new ToolsAdapter(this,toolList));
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 }

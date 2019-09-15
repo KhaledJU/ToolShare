@@ -37,4 +37,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'io.paperdb:paperdb:2.6'
 }
