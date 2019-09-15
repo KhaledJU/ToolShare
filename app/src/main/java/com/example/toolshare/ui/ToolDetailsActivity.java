@@ -37,7 +37,7 @@ public class ToolDetailsActivity extends AppCompatActivity {
     Tool mTool;
     User owner;
 
-    private static final String city = "City :  ";
+    private static final String city =  "City :  ";
     private static final String phone = "Phone :  ";
     private static final String email = "Email :  ";
 

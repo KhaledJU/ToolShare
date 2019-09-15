@@ -1,13 +1,16 @@
 package com.example.toolshare.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.toolshare.ToolsAdapter;
 import com.example.toolshare.R;
@@ -58,5 +61,26 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.item_profile:
+                intent = new Intent(this,ProfileActivity.class);
+                //intent.putExtra()
+                startActivity(intent);
+                return true;
+            case R.id.item_mytools:
+                intent = new Intent(this,MyToolsActivity.class);
+                //intent.putExtra()
+                startActivity(intent);
+                return true;
+            case R.id.item_signout:
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

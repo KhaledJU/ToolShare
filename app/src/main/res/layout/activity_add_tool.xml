@@ -19,6 +19,7 @@
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
                 android:layout_gravity="bottom">
 
             </androidx.appcompat.widget.Toolbar>

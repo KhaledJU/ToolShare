@@ -56,8 +56,6 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_owner"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/colorAccent"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:src="@drawable/user_icon"/>

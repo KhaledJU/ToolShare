@@ -16,9 +16,11 @@
             android:background="?colorPrimary">
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_profile"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
                 android:layout_gravity="bottom">
 
             </androidx.appcompat.widget.Toolbar>
@@ -31,56 +33,68 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/my_img"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/colorAccent"
+            android:layout_marginTop="20dp"
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:src="@drawable/user_icon"/>
 
         <Button
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:layout_marginTop="20dp"
+            android:onClick="onChosePhotoClick"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/white"
             android:background="@color/colorAccent"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:text="@string/choose_phote"
+            android:text="@string/chose_phote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:id="@+id/my_name"
                 android:textColor="@android:color/white"
-                android:layout_marginTop="40dp"
-                android:textSize="30sp"
+                android:layout_marginTop="30dp"
+                android:textSize="25sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:id="@+id/my_email"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="20dp"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:id="@+id/my_phone"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="20dp"
-                android:textSize="30sp"
+                android:textSize="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:id="@+id/my_city"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
