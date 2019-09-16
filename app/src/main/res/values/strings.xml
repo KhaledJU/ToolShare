@@ -22,8 +22,10 @@
     <string name="add_to_widget">add to widget</string>
     <string name="tool_name">Tool name</string>
     <string name="available">Available</string>
-    <string name="add_tool">Add tool</string>
     <string name="chose_phote">Chose phote</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="add_tool">Add tool</string>
+    <string name="add">Add</string>
+    <string name="add_picture">Add Picture</string>
 </resources>

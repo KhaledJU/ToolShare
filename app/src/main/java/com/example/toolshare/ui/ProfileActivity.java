@@ -1,9 +1,13 @@
 package com.example.toolshare.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String city =  "City :  ";
     private static final String phone = "Phone :  ";
     private static final String email = "Email :  ";
+    private static final int galleryRequestCode = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,5 +71,16 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void onChosePhotoClick(View view) {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery,galleryRequestCode);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==galleryRequestCode && resultCode==RESULT_OK){
+            Uri uri=data.getData();
+            myImg.setImageURI(uri);
+        }
     }
 }

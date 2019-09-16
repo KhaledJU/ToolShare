@@ -31,6 +31,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_mytools"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:buttonGravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:titleTextAppearance="@style/Toolbar.TitleText"
