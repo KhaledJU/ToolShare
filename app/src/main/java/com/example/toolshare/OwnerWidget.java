@@ -31,7 +31,7 @@ public class OwnerWidget extends AppWidgetProvider {
         String phone = Paper.book().read("phone");
         String email = Paper.book().read("email");
 
-        if(imgUrl.equals("default")) {
+        /*if(imgUrl.equals("default")) {
             Picasso.get()
                     .load(R.drawable.user_icon)
                     .into(views, R.id.img_owner_widget, new int[]{appWidgetId});
@@ -40,7 +40,7 @@ public class OwnerWidget extends AppWidgetProvider {
             Picasso.get()
                     .load(imgUrl)
                     .into(views, R.id.img_owner_widget, new int[]{appWidgetId});
-        }
+        }*/
 
         views.setTextViewText(R.id.tv_owner_name_widget, name);
         views.setTextViewText(R.id.tv_owner_city_widget, city);

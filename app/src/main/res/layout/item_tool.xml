@@ -11,18 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_launcher_foreground"
             android:id="@+id/img_tool_item"
             android:contentDescription="@string/tool_img"
             android:background="@android:color/white"
-            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/tv_tool_item"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:textColor="@android:color/white"
             android:gravity="center"
             android:textSize="20sp"

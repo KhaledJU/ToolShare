@@ -11,10 +11,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.toolshare.ToolsAdapter;
 import com.example.toolshare.R;
 import com.example.toolshare.Tool;
+import com.example.toolshare.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_main) RecyclerView mRecycle;
     @BindView(R.id.toolbar_main) Toolbar mToolbar;
 
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
     List<Tool> toolList;
 
     @Override
@@ -37,23 +47,42 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(mToolbar);
 
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mRecycle.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         mRecycle.setHasFixedSize(true);
 
-        toolList = new ArrayList<>();
 
-        toolList.add(new Tool("","https://www.constructiontoolwarehouse.com/images/homeFeature/682-600354420_L.jpg", "first tool",true));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "second tool",true));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "third tool",true));
-        toolList.add(new Tool("","0", "forth tool",true));
-        toolList.add(new Tool("","https://www.constructiontoolwarehouse.com/images/homeFeature/682-600354420_L.jpg", "first tool",true));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "second tool",true));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "third tool",true));
-        toolList.add(new Tool("","0", "forth tool",true));
 
+        getTasks();
+
+    }
+
+    private void getTasks() {
+        mDatabase.child("tools").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                toolList = new ArrayList<>();
+                for (DataSnapshot toolSnapshot: dataSnapshot.getChildren()) {
+                    Tool mTool = toolSnapshot.getValue(Tool.class);
+                    if(mTool.isAvailable())
+                        toolList.add(mTool);
+                }
+                updateUI();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private void updateUI() {
         mRecycle.setAdapter(new ToolsAdapter(this,toolList));
-
     }
 
     @Override
@@ -78,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.item_signout:
+                mAuth.signOut();
+                intent=new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                finish();
                 return true;
         }
 

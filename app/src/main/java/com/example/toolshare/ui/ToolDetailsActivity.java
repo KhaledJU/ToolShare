@@ -1,5 +1,6 @@
 package com.example.toolshare.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -17,6 +18,12 @@ import com.example.toolshare.OwnerWidget;
 import com.example.toolshare.R;
 import com.example.toolshare.Tool;
 import com.example.toolshare.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -36,6 +43,8 @@ public class ToolDetailsActivity extends AppCompatActivity {
 
     Tool mTool;
     User owner;
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
 
     private static final String city =  "City :  ";
     private static final String phone = "Phone :  ";
@@ -50,15 +59,34 @@ public class ToolDetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mTool = getIntent().getParcelableExtra("Tool");
-        owner = new User("","Mohammad Natsha",
-                "noob.natsha@gmail.com","basswood",
-                "0592499777","Hebron");
 
-        owner.setImgUrl("https://scontent.fjrs1-1.fna.fbcdn.net/v/t1.0-9/67233020_1200242943491050_4026239387086880768_n.jpg?_nc_cat=105&_nc_oc=AQlUy8Ts56XaO2-MXo0p9bvQRS4npIsGve6rdZ-3f0_2BS3jVCw5kiYf1-IF-2jUQ-Q&_nc_ht=scontent.fjrs1-1.fna&oh=dd7a5fb4393bbfbcbd776a679d67c850&oe=5E08000F");
-        //owner.setImgUrl("C:\\Users\\asus\\Desktop\\nat.jpg");
         setSupportActionBar(mToolbar);
         setTitle(mTool.getName());
 
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        
+
+        getOwner();
+
+    }
+
+    private void getOwner() {
+        mDatabase.child("users").child(mTool.getOwnerId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                owner=  dataSnapshot.getValue(User.class);
+                updateUI();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void updateUI() {
         toolImg.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -85,7 +113,6 @@ public class ToolDetailsActivity extends AppCompatActivity {
         ownerEmailTv.setText(String.format("%s%s", email, owner.getEmail()));
         ownerPhoneTv.setText(String.format("%s%s", phone, owner.getPhoneNumber()));
         ownerCityTv.setText(String.format("%s%s", city, owner.getCity()));
-
     }
 
     public void onCallClick(View view) {
@@ -96,7 +123,7 @@ public class ToolDetailsActivity extends AppCompatActivity {
 
     public void onAddWidgetClicked(View view) {
         Paper.init(this);
-        if(owner.getImgUrl() != null) Paper.book().write("imgUrl", owner.getImgUrl());
+        Paper.book().write("imgUrl", owner.getImgUrl());
         Paper.book().write("name", owner.getFullName());
         Paper.book().write("city", owner.getCity());
         Paper.book().write("email", owner.getEmail());

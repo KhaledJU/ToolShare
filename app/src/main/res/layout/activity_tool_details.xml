@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
+                android:adjustViewBounds="true"
                 android:src="@drawable/ic_launcher_foreground"
                 android:id="@+id/img_tool_detail"
                 android:background="@android:color/white"

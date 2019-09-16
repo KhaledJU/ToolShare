@@ -15,10 +15,14 @@ import android.widget.Toast;
 import com.example.toolshare.R;
 import com.example.toolshare.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,12 +30,13 @@ import butterknife.ButterKnife;
 public class SignupActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
-    @BindView(R.id.email_login) EditText editName;
-    @BindView(R.id.email_login) EditText editEmail;
-    @BindView(R.id.pass_login) EditText editPass;
-    @BindView(R.id.email_login) EditText editPhone;
-    @BindView(R.id.pass_login) EditText editCity;
+    @BindView(R.id.name_signup) EditText editName;
+    @BindView(R.id.email_signup) EditText editEmail;
+    @BindView(R.id.pass_signup) EditText editPass;
+    @BindView(R.id.phone_signup) EditText editPhone;
+    @BindView(R.id.city_signup) EditText editCity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class SignupActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     private void createAccount(String email, String password) {
@@ -65,13 +72,13 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void createUser(FirebaseUser user) {
-        User newUser = new User(user.getUid(),editName.getText().toString()
-                ,editEmail.getText().toString(),editPass.getText().toString()
+        User newUser = new User(user.getUid(),editName.getText().toString(),editEmail.getText().toString()
                 ,editPhone.getText().toString(),editCity.getText().toString());
 
-        //firebase
+        mDatabase.child("users").child(newUser.getId()).setValue(newUser);
 
     }
+
 
     private boolean isValidInput() {
         if(editName==null  || editEmail==null || editPass==null || editPhone==null || editCity==null

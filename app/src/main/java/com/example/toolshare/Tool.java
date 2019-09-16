@@ -4,12 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Tool implements Parcelable {
+    private String id;
     private String ownerId;
     private String imgUrl;
     private String name;
     private boolean available;
 
-    public Tool(String ownerId, String imgUrl, String toolName, boolean availabel) {
+    public Tool(){
+
+    }
+
+    public Tool(String id, String ownerId, String imgUrl, String toolName, boolean availabel) {
+        this.id = id;
         this.ownerId = ownerId;
         this.imgUrl = imgUrl;
         this.name = toolName;
@@ -17,6 +23,7 @@ public class Tool implements Parcelable {
     }
 
     protected Tool(Parcel in) {
+        id = in.readString();
         ownerId = in.readString();
         imgUrl = in.readString();
         name = in.readString();
@@ -35,6 +42,10 @@ public class Tool implements Parcelable {
         }
     };
 
+    public void setId(String id){
+        this.id = id;
+    }
+
     public void setOwnerId(String ownerId){
         this.ownerId = ownerId;
     }
@@ -49,6 +60,10 @@ public class Tool implements Parcelable {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getOwnerId() {
@@ -74,6 +89,7 @@ public class Tool implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
         parcel.writeString(ownerId);
         parcel.writeString(imgUrl);
         parcel.writeString(name);

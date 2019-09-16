@@ -13,11 +13,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.toolshare.MyToolsAdapter;
 import com.example.toolshare.R;
 import com.example.toolshare.Tool;
 import com.example.toolshare.ToolsAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +37,8 @@ public class MyToolsActivity extends AppCompatActivity {
     @BindView(R.id.recycler_mytools) RecyclerView mRecycle;
     @BindView(R.id.toolbar_mytools) Toolbar mToolbar;
 
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
     List<Tool> toolList;
 
     @Override
@@ -41,24 +50,41 @@ public class MyToolsActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         setTitle("My Tools");
 
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mRecycle.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         mRecycle.setHasFixedSize(true);
 
         toolList = new ArrayList<>();
 
-        toolList.add(new Tool("","https://www.constructiontoolwarehouse.com/images/homeFeature/682-600354420_L.jpg", "first tool",true));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "second tool",false));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "third tool",true));
-        toolList.add(new Tool("","0", "forth tool",true));
-        toolList.add(new Tool("","https://www.constructiontoolwarehouse.com/images/homeFeature/682-600354420_L.jpg", "first tool",false));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "second tool",true));
-        toolList.add(new Tool("","http://i.imgur.com/DvpvklR.png", "third tool",false));
-        toolList.add(new Tool("","0", "forth tool",true));
+        getTasks();
 
+    }
+    private void getTasks() {
+        mDatabase.child("tools").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                toolList = new ArrayList<>();
+                for (DataSnapshot toolSnapshot: dataSnapshot.getChildren()) {
+                    Tool mTool = toolSnapshot.getValue(Tool.class);
+                    if(mTool.getOwnerId().equals(mAuth.getUid()))
+                        toolList.add(mTool);
+                }
+                updateUI();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private void updateUI() {
         mRecycle.setAdapter(new MyToolsAdapter(this,toolList));
-
-
-
     }
 
     @Override
@@ -81,6 +107,7 @@ public class MyToolsActivity extends AppCompatActivity {
         item = (View) item.getParent();
         RecyclerView cycle = (RecyclerView) item.getParent();
         int position = cycle.getChildLayoutPosition(item);
+        mDatabase.child("tools").child(toolList.get(position).getId()).removeValue();
     }
 
     public void checkClicked(View view){
@@ -90,12 +117,8 @@ public class MyToolsActivity extends AppCompatActivity {
         item = (View) item.getParent();
         RecyclerView cycle = (RecyclerView) item.getParent();
         int position = cycle.getChildLayoutPosition(item);
-        if(checkBox.isChecked())
-            updateTool(position,true);
-        else
-            updateTool(position,false);
+        mDatabase.child("tools").child(toolList.get(position).getId())
+                .child("available").setValue(checkBox.isChecked());
     }
 
-    private void updateTool(int position, boolean b) {
-    }
 }
