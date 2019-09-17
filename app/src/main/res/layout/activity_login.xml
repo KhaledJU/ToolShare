@@ -23,17 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:layout_marginTop="60dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
-            android:textColor="@android:color/black"
-            android:background="@android:color/white"
+        <com.google.android.gms.common.SignInButton
+            android:onClick="signInWithGoogle"
+            android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:textSize="20sp"
-            android:text="Sign in with google "
+            android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_marginTop="35dp"
@@ -105,7 +101,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:textStyle="bold"
-                android:onClick="switchToSignup"
+                android:onClick="signupClicked"
                 android:id="@+id/sign_upTv"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/colorAccent"

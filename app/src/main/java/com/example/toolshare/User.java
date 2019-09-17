@@ -25,6 +25,13 @@ public class User implements Parcelable {
         this.imgUrl = "default";
     }
 
+    public User(String id, String fullName, String email, String imgUrl) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.imgUrl = imgUrl;
+    }
+
     protected User(Parcel in) {
         id = in.readString();
         fullName = in.readString();

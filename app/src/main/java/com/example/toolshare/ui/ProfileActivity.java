@@ -81,7 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
         mDatabase.child("users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                user=  dataSnapshot.getValue(User.class);
+                user = dataSnapshot.getValue(User.class);
                 updateUI();
             }
 
