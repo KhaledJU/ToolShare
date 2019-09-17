@@ -72,6 +72,7 @@ public class ToolsAdapter extends RecyclerView.Adapter<ToolsAdapter.ViewHolder> 
                 Intent intent = new Intent(context, ToolDetailsActivity.class);
                 intent.putExtra("Tool",toolList.get(position));
                 context.startActivity(intent);
+
             }
         });
     }

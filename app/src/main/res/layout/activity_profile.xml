@@ -33,6 +33,7 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:contentDescription="@string/profile_picture"
             android:id="@+id/my_img"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"

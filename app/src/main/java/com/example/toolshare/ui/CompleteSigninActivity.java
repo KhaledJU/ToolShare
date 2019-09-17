@@ -54,7 +54,7 @@ public class CompleteSigninActivity extends AppCompatActivity {
         if(editPhone==null || editCity==null
                 || TextUtils.isEmpty(editPhone.getText().toString())
                 || TextUtils.isEmpty(editCity.getText().toString())){
-            Toast.makeText(this,"Please fill all the fields!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.fill_all),Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

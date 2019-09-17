@@ -19,7 +19,7 @@
             android:textColor="@android:color/white"
             android:textSize="40sp"
             android:gravity="center"
-            android:text="Sign up"
+            android:text="@string/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

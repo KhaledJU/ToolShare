@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:contentDescription="@string/owner_img"
             android:adjustViewBounds="true"
             android:id="@+id/img_owner_widget"
             android:layout_width="85dp"

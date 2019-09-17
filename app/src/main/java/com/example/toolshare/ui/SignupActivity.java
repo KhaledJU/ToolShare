@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.toolshare.DoInBackground_AsyncClass;
 import com.example.toolshare.R;
 import com.example.toolshare.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -76,7 +77,6 @@ public class SignupActivity extends AppCompatActivity {
                 ,editPhone.getText().toString(),editCity.getText().toString());
 
         mDatabase.child("users").child(newUser.getId()).setValue(newUser);
-
     }
 
 
@@ -87,7 +87,7 @@ public class SignupActivity extends AppCompatActivity {
                 || TextUtils.isEmpty(editPass.getText().toString())
                 || TextUtils.isEmpty(editPhone.getText().toString())
                 || TextUtils.isEmpty(editCity.getText().toString())){
-            Toast.makeText(this,"Please fill all the fields!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.fill_all),Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity{
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.auth_faild), Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
 
@@ -184,7 +184,7 @@ public class LoginActivity extends AppCompatActivity{
     private boolean isValidInput() {
         if(editEmail==null || editPass==null
                 || TextUtils.isEmpty(editEmail.getText().toString()) || TextUtils.isEmpty(editPass.getText().toString())) {
-            Toast.makeText(this,"Please Fill Email and Password!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.fill_email_pass),Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -199,5 +199,11 @@ public class LoginActivity extends AppCompatActivity{
     public void signInWithGoogle(View view) {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    public void signupClicked(View view) {
+        Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

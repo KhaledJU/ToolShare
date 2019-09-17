@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.example.toolshare.DoInBackground_AsyncClass;
 import com.example.toolshare.MyToolsAdapter;
 import com.example.toolshare.R;
 import com.example.toolshare.Tool;
@@ -48,7 +49,7 @@ public class MyToolsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
-        setTitle("My Tools");
+        setTitle(R.string.my_tool);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -84,6 +85,7 @@ public class MyToolsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
+        mRecycle.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         mRecycle.setAdapter(new MyToolsAdapter(this,toolList));
     }
 
@@ -107,7 +109,9 @@ public class MyToolsActivity extends AppCompatActivity {
         item = (View) item.getParent();
         RecyclerView cycle = (RecyclerView) item.getParent();
         int position = cycle.getChildLayoutPosition(item);
-        mDatabase.child("tools").child(toolList.get(position).getId()).removeValue();
+        //mDatabase.child("tools").child(toolList.get(position).getId()).removeValue();
+        new DoInBackground_AsyncClass().execute(toolList.get(position).getId());
+
     }
 
     public void checkClicked(View view){

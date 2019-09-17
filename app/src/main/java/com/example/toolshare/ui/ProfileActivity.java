@@ -52,11 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage mStorage;
     StorageReference mStorageReference;
 
-    private static final String name =  "Name :  ";
-    private static final String city =  "City :  ";
-    private static final String phone = "Phone :  ";
-    private static final String email = "Email :  ";
-    private static final int galleryRequestCode = 100;
+    private  final int galleryRequestCode = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mStorage = FirebaseStorage.getInstance();
         mStorageReference = mStorage.getReference();
+
 
         getUser();
 
@@ -105,10 +102,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }, 0);
 
-        myName.setText(String.format("%s%s", name, user.getFullName()));
-        myEmail.setText(String.format("%s%s", email, user.getEmail()));
-        myPhone.setText(String.format("%s%s", phone, user.getPhoneNumber()));
-        myCity.setText(String.format("%s%s", city, user.getCity()));
+        myName.setText(String.format("%s%s", getString(R.string.name), user.getFullName()));
+        myEmail.setText(String.format("%s%s", getString(R.string.emaill), user.getEmail()));
+        myPhone.setText(String.format("%s%s", getString(R.string.phonee), user.getPhoneNumber()));
+        myCity.setText(String.format("%s%s", getString(R.string.cityyy), user.getCity()));
     }
 
     public void onChosePhotoClick(View view) {
@@ -141,7 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.faild)+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         }

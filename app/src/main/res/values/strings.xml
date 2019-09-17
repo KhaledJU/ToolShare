@@ -32,4 +32,21 @@
     <string name="continue_your_signin">Continue your Signin</string>
     <string name="finish">Finish</string>
     <string name="web_client_id">967542148215-cev9h0vl9ods755dkscihgm14eflevcc.apps.googleusercontent.com</string>
+    <string name="the_added_photo_picture">the added photo picture</string>
+    <string name="sign_in_with_google_button">sign in with google button</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="owner_img">owner img</string>
+    <string name="delete_img">delete img</string>
+    <string name="title_add_tool">Add Tool</string>
+    <string name="fill_all">Please fill all the fields!</string>
+    <string name="uploaded">Uploaded</string>
+    <string name="failed">Failed</string>
+    <string name="auth_faild">Authentication Failed.</string>
+    <string name="fill_email_pass">Please Fill Email and Password!</string>
+    <string name="my_tool">My Tools</string>
+    <string name="name">Name :</string>
+    <string name="cityyy">City :</string>
+    <string name="phonee">Phone :</string>
+    <string name="emaill">Email :</string>
+    <string name="faild">Failed</string>
 </resources>

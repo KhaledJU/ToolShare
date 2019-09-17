@@ -58,7 +58,7 @@ public class AddToolActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        setTitle("Add Tool");
+        setTitle(getString(R.string.title_add_tool));
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -83,7 +83,7 @@ public class AddToolActivity extends AppCompatActivity {
     private boolean isValidInput() {
         if(mTextView==null || mImageView==null || mCheckBox==null
                 || TextUtils.isEmpty(mTextView.getText().toString()) || !uploaded) {
-            Toast.makeText(this,"Please fill all the fields!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.fill_all),Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -110,13 +110,13 @@ public class AddToolActivity extends AppCompatActivity {
 
                             });
                             uploaded=true;
-                            Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.uploaded), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.failed)+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         }

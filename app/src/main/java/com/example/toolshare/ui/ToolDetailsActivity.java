@@ -46,9 +46,6 @@ public class ToolDetailsActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
-    private static final String city =  "City :  ";
-    private static final String phone = "Phone :  ";
-    private static final String email = "Email :  ";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -110,9 +107,9 @@ public class ToolDetailsActivity extends AppCompatActivity {
         }, 0);
 
         ownerNameTv.setText(owner.getFullName());
-        ownerEmailTv.setText(String.format("%s%s", email, owner.getEmail()));
-        ownerPhoneTv.setText(String.format("%s%s", phone, owner.getPhoneNumber()));
-        ownerCityTv.setText(String.format("%s%s", city, owner.getCity()));
+        ownerEmailTv.setText(String.format("%s%s", getString(R.string.emaill), owner.getEmail()));
+        ownerPhoneTv.setText(String.format("%s%s", getString(R.string.phonee), owner.getPhoneNumber()));
+        ownerCityTv.setText(String.format("%s%s", getString(R.string.cityyy), owner.getCity()));
     }
 
     public void onCallClick(View view) {
