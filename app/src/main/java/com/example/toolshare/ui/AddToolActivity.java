@@ -46,7 +46,8 @@ public class AddToolActivity extends AppCompatActivity {
     FirebaseStorage mStorage;
     StorageReference mStorageReference;
 
-    String imgUrl = null;
+    String imgUrl;
+    boolean uploaded = false;
 
     private static final int galleryRequestCode = 100;
 
@@ -70,6 +71,7 @@ public class AddToolActivity extends AppCompatActivity {
             String id = mDatabase.child("tools").push().getKey();
             Tool newTool = new Tool(id, mAuth.getUid(), imgUrl, mTextView.getText().toString(), mCheckBox.isChecked());
             mDatabase.child("tools").child(newTool.getId()).setValue(newTool);
+            finish();
         }
     }
 
@@ -80,7 +82,7 @@ public class AddToolActivity extends AppCompatActivity {
 
     private boolean isValidInput() {
         if(mTextView==null || mImageView==null || mCheckBox==null
-                || TextUtils.isEmpty(mTextView.getText().toString()) || imgUrl==null) {
+                || TextUtils.isEmpty(mTextView.getText().toString()) || !uploaded) {
             Toast.makeText(this,"Please fill all the fields!",Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -105,8 +107,10 @@ public class AddToolActivity extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     imgUrl = uri.toString();
                                 }
+
                             });
-                            //Toast.makeText(MainActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            uploaded=true;
+                            Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

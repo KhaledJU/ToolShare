@@ -3,11 +3,13 @@ package com.example.toolshare.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
-    List<Tool> toolList;
+    List<Tool> toolList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +55,13 @@ public class MainActivity extends AppCompatActivity {
         mRecycle.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         mRecycle.setHasFixedSize(true);
 
-
-
         getTasks();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private void getTasks() {
@@ -82,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        mRecycle.setAdapter(new ToolsAdapter(this,toolList));
+        mRecycle.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        mRecycle.setAdapter(new ToolsAdapter(getApplicationContext(),toolList));
     }
 
     @Override
