@@ -26,8 +26,8 @@ public class CompleteSigninActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
-    @BindView(R.id.phone_signup) EditText editPhone;
-    @BindView(R.id.city_signup) EditText editCity;
+    @BindView(R.id.phone_continue) EditText editPhone;
+    @BindView(R.id.city_continue) EditText editCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

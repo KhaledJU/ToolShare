@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     GoogleSignInClient mGoogleSignInClient;
-    private final int RC_SIGN_IN = 110010;
+    private final int RC_SIGN_IN = 20;
     @BindView(R.id.email_login) EditText editEmail;
     @BindView(R.id.pass_login) EditText editPass;
     @BindView(R.id.sign_in_button) SignInButton signInButton;
@@ -68,6 +68,12 @@ public class LoginActivity extends AppCompatActivity{
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         signInButton.setSize(SignInButton.SIZE_WIDE);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signInWithGoogle();
+            }
+        });
 
     }
 
@@ -196,7 +202,7 @@ public class LoginActivity extends AppCompatActivity{
             signIn(editEmail.getText().toString(), editPass.getText().toString());
     }
 
-    public void signInWithGoogle(View view) {
+    public void signInWithGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
