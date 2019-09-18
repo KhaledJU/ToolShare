@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'upload'
             keyPassword 'basswood'
-            storeFile file('../../keyStores/keystore.jks')
+            storeFile file('./keystore.jks')
             storePassword 'basswood'
         }
     }
